@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ada</title>
+    <style>
+        /*<!--the popup message-->*/
+        #snackbar {
+            visibility: hidden; /* Hidden by default. Visible on click */
+            min-width: 250px; /* Set a default minimum width */
+            margin-left: -125px; /* Divide value of min-width by 2 */
+            background-color: #333; /* Black background color */
+            color: #fff; /* White text color */
+            text-align: center; /* Centered text */
+            border-radius: 2px; /* Rounded borders */
+            padding: 16px; /* Padding */
+            position: fixed; /* Sit on top of the screen */
+            z-index: 1; /* Add a z-index if needed */
+            left: 50%; /* Center the snackbar */
+            top: 250px; /* 30px from the bottom */
+        }
+
+        /* Show the snackbar when clicking on a button (class added with JavaScript) */
+        #snackbar.show {
+            visibility: visible; /* Show the snackbar */
+
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+            However, delay the fade out process for 2.5 seconds */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        /* Animations to fade the snackbar in and out */
+        @-webkit-keyframes fadein {
+            from {
+                top: 0;
+                opacity: 0;
+            }
+            to {
+                top: 250px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                top: 0;
+                opacity: 0;
+            }
+            to {
+                top: 250px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                top: 250px;
+                opacity: 1;
+            }
+            to {
+                top: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                top: 250px;
+                opacity: 1;
+            }
+            to {
+                top: 0;
+                opacity: 0;
+            }
+        }
+
+        /*obvious*/
+        body {
+            background-color: wheat;
+        }
+
+        {
+            text-decoration: underline
+        ;
+
+            color: crimson
+        ;
+        }
+        /*the i write myself by myself title*/
+        h4, h3 {
+            font-family: 'Waiting for the Sunrise', cursive;
+            font-size: 20px;
+            margin: 0 auto;
+            letter-spacing: 6px;
+            font-weight: bold;
+            color: crimson;
+            text-decoration: none;
+        }
+
+        /*also obvious*/
+        p.text2, li {
+            text-shadow: 1px 1px #a9a9a9;
+        }
+
+        /*the moving picturenext to the list*/
+        /*div.column-md-5 {*/
+
+        /*position: relative;*/
+        /*-webkit-animation: mymove 5s infinite; !* Safari 4.0 - 8.0 *!*/
+        /*animation: mymove 5s infinite;*/
+        /*}*/
+
+        div.column-md-5 {
+            width: 60px;
+            height: 40px;
+            /*background: red;*/
+            position: relative;
+            -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-delay: 2s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-fill-mode: backwards; /* Safari 4.0 - 8.0 */
+            /*animation-name: example;*/
+            animation-duration: 3s;
+            /*animation-delay: 2s;*/
+            animation-fill-mode: backwards;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        /* Safari 4.0 - 8.0 */
+        @-webkit-keyframes example {
+            0% {
+                top: 0px
+            }
+            25% {
+                top: 300px;
+            }
+            50% {
+                top: 300px
+            }
+            75% {
+                top: 300px
+            }
+            100% {
+                top: 0px
+            }
+        }
+
+        @keyframes example {
+            0% {
+                top: 0px
+            }
+            25% {
+                top: 300px;
+            }
+            50% {
+                top: 300px
+            }
+            75% {
+                top: 300px
+            }
+            100% {
+                top: 0px
+            }
+        }
+
+        /*the memes thing*/
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+                <a class="typewriter" id="typedtext"><h4>So you think you can be a programmer :)</h4></a>
+            </div>
+            <div class="col-4 text-center">
+                <a class="blog-header-logo text-dark" href="#">
+                    <img src="notm/Clearly+Agile+-+Types+of+Programmers+-+Header+Bar.png" height="100" width="100"/></a>
+            </div>
+            <div class="col-md-4 justify-content-end align-items-center">
+                <button style="background-color: darkgrey" onclick="myFunction()" class="btn btn-m btn-outline-warning">
+                    <h6>Press me so i could take you
+                        somewhere</h6> <!--responsive but how to make it under the logo-->
+                </button>
+                <div id="snackbar">NO ACTUALLY I DON'T <br>TAKE STRAGERS WITH ME :)</div>
+            </div>
+        </div>
+    </header>
+    <hr class="featurette-divider">
+    <div class="row justify-content-between">
+        <div class="col-md-6">
+            <h3>Historical background :</h3>
+            <p class="text2">British countess and mathematician Ada Lovelace is often considered the first computer
+                programmer, as she
+                was the first to publish an algorithm intended for implementation on Charles Babbage's analytical
+                engine, in October 1842, intended for the calculation of Bernoulli numbers. Because Babbage's machine
+                was never completed to a functioning standard in her time, she never saw this algorithm run.
+
+                The first person to run a program on a functioning modern electronically based computer was computer
+                scientist Konrad Zuse, in 1941.
+
+                The ENIAC programming team, consisting of Kay McNulty, Betty Jennings, Betty Snyder, Marlyn Wescoff,
+                Fran Bilas and Ruth Lichterman were the first regularly working programmers.
+
+                International Programmers' Day is celebrated annually on 7 January. In 2009, the government of
+                Russia decreed a professional annual holiday known as Programmers' Day to be celebrated on 13 September
+                (12 September in leap years). It had also been an unofficial international holiday before that..</p>
+        </div>
+        <div class="col-md-6">
+            <img src="notm/main-qimg-b9acd96ce9cbc1d063f309f2ee847e48.png" height="450" width="450"/>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+
+    <div class="row justify-content-between">
+        <div class="column-md-5">
+            <!--moving photo-->
+            <!--<div class="img">-->
+            <img src="notm/logo-mp-primary.png" height="177" width="600"/>
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-6 col-12">
+            <h3>What it needs to be a programmer :</h3>
+            <ul>
+                <li>Critical Thinking -- Using logic and reasoning to identify the strengths and weaknesses of
+                    alternative solutions, conclusions or approaches to problems.
+                </li>
+                <li>Complex Problem Solving -- Identifying complex problems and reviewing related information to develop
+                    and evaluate options and implement solutions.
+                </li>
+                <li> Operations Analysis -- Analyzing needs and product requirements to create a design.</li>
+                <li>Technology Design -- Generating or adapting equipment and technology to serve user needs.</li>
+                <li> Equipment Selection -- Determining the kind of tools and equipment needed to do a job.</li>
+                <li>Installation -- Installing equipment, machines, wiring, or programs to meet specifications.</li>
+                <li> Mathematics -- Using mathematics to solve problems.</li>
+                <li> Judgment and Decision Making -- Considering the relative costs and benefits of potential actions to
+                    choose the most appropriate one.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row">
+        <div class="col-md-12 col-12">
+            <h3>Just a few memes:)</h3>
+            <div class="gallery">
+
+                <a target="_blank" href="front.jpg">
+                    <img src="front.jpg" alt="Trolltunga Norway" width="300" height="200">
+                </a>
+            </div>
+
+            <div class="gallery">
+                <a target="_blank" href="32-1.jpg">
+                    <img src="32-1.jpg" alt="Forest" width="600" height="400">
+                </a>
+            </div>
+
+            <div class="gallery">
+                <a target="_blank" href="54ef37a0a297b.jpeg">
+                    <img src="54ef37a0a297b.jpeg" alt="Northern Lights" width="600" height="400">
+                </a>
+            </div>
+
+            <div class="gallery">
+                <a target="_blank" href="54ss55ix0vwy.jpg">
+                    <img src="54ss55ix0vwy.jpg" alt="Mountains" width="600" height="400">
+                </a>
+                <a target="_blank" href="7179b7dc45165f9c77afe0a1ff3b0c65.jpeg">
+                    <img src="7179b7dc45165f9c77afe0a1ff3b0c65.jpeg" alt="Trolltunga Norway" width="300" height="200">
+                </a>
+            </div>
+
+            <div class="gallery">
+                <a target="_blank" href="4165049.jpg">
+                    <img src="4165049.jpg" alt="Forest" width="600" height="400">
+                </a>
+            </div>
+
+            <div class="gallery">
+                <a target="_blank" href="1419834403054.jpg">
+                    <img src="1419834403054.jpg" alt="Northern Lights" width="600" height="400">
+                </a>
+            </div>
+
+            <div class="gallery">
+                <a target="_blank" href="f94dce52fc6a17ec1352b741098d2cb7.jpg">
+                    <img src="f94dce52fc6a17ec1352b741098d2cb7.jpg" alt="Mountains" width="600" height="400">
+
+                </a>
+            </div>
+            <div class="gallery">
+                <a target="_blank" href="programmers_and_gamers_understand.jpg">
+                    <img src="programmers_and_gamers_understand.jpg" alt="Northern Lights" width="600" height="400">
+                </a>
+            </div>
+
+            <div class="gallery">
+                <a target="_blank" href="the_two_states_of_every_programmers.jpg">
+                    <img src="the_two_states_of_every_programmers.jpg" alt="Northern Lights" width="600" height="400">
+                </a>
+            </div>
+        </div>
+        <hr class=" featurette-divider">
+        <div id="jwana" class="row">
+            <h1>this text is only for the sake of doing an API :)</h1>
+            <div v-for="rant in rants" class="col">{{rant.text}}</div>
+            <!--<img class v-for="rant in rants" :src="rant.attached_image.url">-->
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    function myFunction() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar")
+
+        // Add the "show" class to DIV
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
+
+    var status = "less";
+
+    function toggleText() {
+        var text = "Here is some text that I want added to the HTML file";
+
+        if (status == "less") {
+            document.getElementById("textArea").innerHTML = text;
+            document.getElementById("toggleButton").innerText = "See Less";
+            status = "more";
+        } else if (status == "more") {
+            document.getElementById("textArea").innerHTML = "";
+            document.getElementById("toggleButton").innerText = "See More";
+            status = "less"
+        }
+    }
+
+    var aText = new Array(
+        "<h3>So you think you can be a programmer :)</h3>"
+    );
+    var iSpeed = 100; // time delay of print out
+    var iIndex = 0; // start printing array at this posision
+    var iArrLength = aText[0].length; // the length of the text array
+    var iScrollAt = 20; // start scrolling up at this many lines
+
+    var iTextPos = 0; // initialise text position
+    var sContents = ''; // initialise contents variable
+    var iRow; // initialise current row
+
+    function typewriter() {
+        sContents = ' ';
+        iRow = Math.max(0, iIndex - iScrollAt);
+        var destination = document.getElementById("typedtext");
+
+        while (iRow < iIndex) {
+            sContents += aText[iRow++] + '<br />';
+        }
+        destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+        if (iTextPos++ == iArrLength) {
+            iTextPos = 0;
+            iIndex++;
+            if (iIndex != aText.length) {
+                iArrLength = aText[iIndex].length;
+                setTimeout("typewriter()", 500);
+            }
+        } else {
+            setTimeout("typewriter()", iSpeed);
+        }
+    }
+
+    typewriter();
+
+    var ahem = new Vue({
+        el: "#jwana",
+        data: {
+            rants: []
+        }
+
+
+    });
+
+    axios.get("https://www.devrant.io/api/devrant/rants?app=3").then(function (response) {
+            //
+            // var array = [];
+            // for(i = 0; i < response.data.rants.length; i++){
+            //     if(typeof response.data.rants[i].attached_image == "object"){
+            //         array.push(response.data.rants[i]);
+            //     }
+            // }
+
+            ahem.rants = response.data.rants;
+        }
+    )
+
+</script>
+</body>
+</html>

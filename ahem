@@ -83,7 +83,7 @@
             background-color: wheat;
         }
 
-        {
+       h3 {
             text-decoration: underline
         ;
 
@@ -91,7 +91,7 @@
         ;
         }
         /*the i write myself by myself title*/
-        h4, h3 {
+        h4 {
             font-family: 'Waiting for the Sunrise', cursive;
             font-size: 20px;
             margin: 0 auto;
@@ -101,12 +101,12 @@
             text-decoration: none;
         }
 
-        /*also obvious*/
+        /*text shadow*/
         p.text2, li {
             text-shadow: 1px 1px #a9a9a9;
         }
 
-        /*the moving picturenext to the list*/
+        /*the moving picture next to the list*/
         /*div.column-md-5 {*/
 
         /*position: relative;*/
@@ -239,11 +239,11 @@
     <hr class="featurette-divider">
 
     <div class="row justify-content-between">
-        <div class="column-md-5">
+        <div class="col-md-12">
             <!--moving photo-->
-            <!--<div class="img">-->
+      
             <img src="notm/logo-mp-primary.png" height="177" width="600"/>
-            <!--</div>-->
+    
         </div>
     </div>
     <div class="row justify-content-end">
@@ -270,7 +270,9 @@
     <hr class="featurette-divider">
     <div class="row">
         <div class="col-md-12 col-12">
+        
             <h3>Just a few memes:)</h3>
+            
             <div class="gallery">
 
                 <a target="_blank" href="front.jpg">
@@ -350,6 +352,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
+        //the popup
     function myFunction() {
         // Get the snackbar DIV
         var x = document.getElementById("snackbar")
@@ -378,9 +381,9 @@
             status = "less"
         }
     }
-
+     //the i type myself by myself title
     var aText = new Array(
-        "<h3>So you think you can be a programmer :)</h3>"
+        "<h4>So you think you can be a programmer :)</h4>"
     );
     var iSpeed = 100; // time delay of print out
     var iIndex = 0; // start printing array at this posision
@@ -422,19 +425,18 @@
 
 
     });
-
+       //doing an API
     axios.get("https://www.devrant.io/api/devrant/rants?app=3").then(function (response) {
-            //
+         ahem.rants = response.data.rants;
+        }
+    )
+            //something i want to keep for my self so just don't bother yourself with it.
             // var array = [];
             // for(i = 0; i < response.data.rants.length; i++){
             //     if(typeof response.data.rants[i].attached_image == "object"){
             //         array.push(response.data.rants[i]);
             //     }
             // }
-
-            ahem.rants = response.data.rants;
-        }
-    )
 
 </script>
 </body>
